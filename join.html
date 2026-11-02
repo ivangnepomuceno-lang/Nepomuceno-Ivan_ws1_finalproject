@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join a club</title>
+  <link rel="stylesheet" href="clubs.css">
+  <script src="clubs.js" defer></script>
+  <script src="app.js" defer></script>
+  <script src="membership.js" defer></script>
+  <script src="join.js" defer></script>
+</head>
+<body class="clubs-body join-page">
+  <div class="join-top">
+    <a href="home.html" class="back">&larr; Back to clubs</a>
+  </div>
+
+  <main class="join-main">
+    <div class="join-card">
+      <img id="join-logo" class="join-logo" alt="">
+      <span class="eyebrow">Membership form</span>
+      <h1 id="join-title"></h1>
+      <p class="join-sub">Fill out the requirements below to become a member and unlock the club page.</p>
+      <p class="form-status" id="form-status" role="alert"></p>
+
+      <form id="join-form" novalidate>
+        <div class="form-grid">
+          <div class="field">
+            <label for="f-fullname">Full name</label>
+            <input type="text" id="f-fullname" name="fullname" autocomplete="name" placeholder="Juan Dela Cruz">
+            <span class="field-error"></span>
+          </div>
+          <div class="field">
+            <label for="f-studentId">Student ID number</label>
+            <input type="text" id="f-studentId" name="studentId" placeholder="e.g. 2026-00123">
+            <span class="field-error"></span>
+          </div>
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input type="email" id="f-email" name="email" autocomplete="email" placeholder="you@email.com">
+            <span class="field-error"></span>
+          </div>
+          <div class="field">
+            <label for="f-contact">Mobile number</label>
+            <input type="tel" id="f-contact" name="contact" autocomplete="tel" placeholder="09123456789">
+            <span class="field-error"></span>
+          </div>
+          <div class="field">
+            <label for="f-course">Course / Program</label>
+            <input type="text" id="f-course" name="course" placeholder="e.g. BS Information Technology">
+            <span class="field-error"></span>
+          </div>
+          <div class="field">
+            <label for="f-year">Year level</label>
+            <select id="f-year" name="year">
+              <option value="">Select year level</option>
+              <option>1st Year</option>
+              <option>2nd Year</option>
+              <option>3rd Year</option>
+              <option>4th Year</option>
+              <option>Other</option>
+            </select>
+            <span class="field-error"></span>
+          </div>
+          <div class="field">
+            <label for="f-section">Section</label>
+            <input type="text" id="f-section" name="section" placeholder="e.g. IT-2A">
+            <span class="field-error"></span>
+          </div>
+          <!-- dito papasok ang Team (kung may teams ang club) at dagdag na requirements -->
+          <div id="extra-fields" class="extra-fields"></div>
+        </div>
+
+        <div class="field full agree">
+          <label class="check">
+            <input type="checkbox" id="f-agree" name="agree">
+            <span>I confirm that the information above is true and I agree to follow the club's rules and activities.</span>
+          </label>
+          <span class="field-error"></span>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit &amp; Join</button>
+      </form>
+    </div>
+  </main>
+  <script>
+    // Pigilan ang pag-reload ng page kung may error, at ipakita ang mali sa halip na mag-reset lang
+    (function () {
+      var form = document.getElementById('join-form')
+      var status = document.getElementById('form-status')
+      form.addEventListener('submit', function (e) { e.preventDefault() })
+      window.addEventListener('error', function (ev) {
+        status.textContent = 'Error: ' + ev.message + ' (' + String(ev.filename || '').split('/').pop() + ':' + ev.lineno + ')'
+      })
+      document.addEventListener('DOMContentLoaded', function () {
+        var missing = []
+        if (typeof CLUBS === 'undefined') missing.push('clubs.js')
+        if (typeof membershipUser !== 'function') missing.push('membership.js')
+        if (missing.length) {
+          status.textContent = 'Missing file: ' + missing.join(', ') + ' (ilagay sa parehong folder ng join.html)'
+        }
+      })
+    })()
+  </script>
+</body>
+</html>

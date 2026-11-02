@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ICCT Clubs</title>
+  <link rel="stylesheet" href="clubs.css">
+  <script src="clubs.js" defer></script>
+  <script src="app.js" defer></script>
+  <script src="membership.js" defer></script>
+  <script src="announcements.js" defer></script>
+  <script src="auth.js" defer></script>
+  <script src="home.js" defer></script>
+</head>
+<body class="clubs-body">
+  <header class="topbar">
+    <span>Welcome, <strong id="welcome-name"></strong></span>
+    <form id="logout-form"><button type="submit" class="logout">Logout</button></form>
+  </header>
+
+  <main class="home">
+    <h1 class="page-title">ICCT CLUBS</h1>
+    <div class="search-box">
+      <input type="search" id="club-search" placeholder="Search club..." autocomplete="off" aria-label="Search club">
+    </div>
+    <div class="filters" id="filters" role="group" aria-label="Filter by category"></div>
+
+    <div class="club-grid" id="club-grid"></div>
+    <p class="no-result" id="no-result" hidden>Walang club na nahanap.</p>
+  </main>
+
+  <footer class="site-footer">
+    <p>ICCT Colleges Foundation, Inc.</p>
+    <p class="foot-small"><a href="admin.html" class="foot-admin">Admin</a></p>
+    <p class="foot-small">&copy; <span id="foot-year"></span> ICCT Clubs. All rights reserved.</p>
+  </footer>
+  <script>document.getElementById('foot-year').textContent = new Date().getFullYear()</script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap');
+
+:root{
+  --accent-color: #38b6ff;
+  --text-color: #ffffff;
+  --muted-color: #d4d8ea;
+  --input-color: rgba(255, 255, 255, 0.14);
+  --error-color: #ff6b81;
+  --success-color: #5be3a0;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html{
+  font-family: Poppins, 'Segoe UI', sans-serif;
+  font-size: 12pt;
+  color: var(--text-color);
+  text-align: center;
+}
+body{
+  min-height: 100vh;
+  background-image:
+    linear-gradient(rgba(10, 10, 30, .62), rgba(10, 10, 30, .62)),
+    url("pexels-pixabay-159650.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* ---------- Glass card ---------- */
+.wrapper{
+  width: min(440px, 100%);
+  padding: 34px 32px 30px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 24px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+  animation: rise .8s ease both;
+}
+.brand{
+  display: inline-block;
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .28em;
+  color: var(--accent-color);
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--accent-color);
+}
+h1{
+  margin-top: 14px;
+  font-size: 3rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.subtitle{
+  margin-top: 4px;
+  font-size: .85rem;
+  color: var(--muted-color);
+}
+
+/* ---------- Form ---------- */
+form{
+  width: 100%;
+  margin-top: 18px;
+  margin-bottom: 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+form > div{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  animation: rise .7s ease both;
+}
+form > div:nth-child(1){ animation-delay: .15s; }
+form > div:nth-child(2){ animation-delay: .25s; }
+form > div:nth-child(3){ animation-delay: .35s; }
+form > div:nth-child(4){ animation-delay: .45s; }
+form > button{ animation: rise .7s .5s ease both; }
+
+form label{
+  flex-shrink: 0;
+  height: 50px;
+  width: 50px;
+  background-color: var(--accent-color);
+  fill: #06121f;
+  color: #06121f;
+  border-radius: 12px 0 0 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  transition: 150ms ease;
+}
+form input{
+  flex-grow: 1;
+  min-width: 0;
+  height: 50px;
+  padding: 1em;
+  font: inherit;
+  color: var(--text-color);
+  border-radius: 0 12px 12px 0;
+  border: 2px solid var(--input-color);
+  background-color: var(--input-color);
+  transition: 150ms ease;
+}
+form input:hover,
+form input:focus{
+  border-color: var(--accent-color);
+}
+form input:focus{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(56, 182, 255, .3), 0 0 16px rgba(56, 182, 255, .35);
+}
+form input::placeholder{
+  color: var(--muted-color);
+  opacity: 0.85;
+}
+
+/* Autofill ng browser: huwag maging puti */
+form input:-webkit-autofill{
+  -webkit-text-fill-color: var(--text-color);
+  -webkit-box-shadow: 0 0 0 1000px #2a3150 inset;
+  caret-color: #fff;
+}
+
+/* ---------- Button ---------- */
+form button[type="submit"]{
+  margin-top: 10px;
+  border: none;
+  border-radius: 1000px;
+  padding: 0.85em 4em;
+  background-color: var(--accent-color);
+  color: #06121f;
+  font: inherit;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 150ms ease;
+}
+form button[type="submit"]:hover,
+form button[type="submit"]:focus-visible{
+  background-color: #ffffff;
+  transform: scale(1.05);
+  outline: none;
+  box-shadow: 0 0 18px rgba(56, 182, 255, .6);
+}
+
+a{
+  color: var(--accent-color);
+  font-weight: 600;
+  text-decoration: none;
+}
+a:hover{
+  text-decoration: underline;
+}
+
+/* ---------- Error state ---------- */
+form div.incorrect label{
+  background-color: var(--error-color);
+}
+form div.incorrect input{
+  border-color: var(--error-color);
+}
+.error-message{
+  min-height: 1.5em;
+  margin-top: 10px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--error-color);
+}
+.error-message.success{
+  color: var(--success-color);
+}
+
+/* ---------- Split layout ---------- */
+.split{
+  width: 100%;
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  align-items: center;
+  gap: 50px;
+}
+.split .wrapper{ justify-self: center; }
+.showcase{ text-align: left; }
+.show-brand{
+  display: inline-block;
+  font-size: .9rem;
+  font-weight: 600;
+  letter-spacing: .3em;
+  color: var(--accent-color);
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--accent-color);
+  animation: rise .8s ease both;
+}
+.showcase h2{
+  margin-top: 18px;
+  font-size: clamp(2rem, 3.6vw, 3.1rem);
+  font-weight: 800;
+  line-height: 1.15;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, .6);
+  animation: rise .8s .1s ease both;
+}
+.show-text{
+  margin-top: 12px;
+  color: var(--muted-color);
+  font-size: 1rem;
+  animation: rise .8s .2s ease both;
+}
+.logo-wall{
+  margin-top: 34px;
+  display: grid;
+  grid-template-columns: repeat(4, 84px);
+  gap: 18px;
+}
+.logo-wall img{
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #fff;
+  border: 3px solid rgba(255, 255, 255, .85);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, .45);
+  animation:
+    pop .6s calc(var(--i) * 70ms + .3s) ease backwards,
+    bob 4s calc(var(--i) * 250ms) ease-in-out infinite;
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+.logo-wall img:hover{
+  transform: scale(1.15);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .55), 0 0 18px var(--accent-color);
+}
+/* ang brand sa loob ng card ay para sa phone lang */
+@media (min-width: 901px){
+  .wrapper .brand{ display: none; }
+}
+@media (max-width: 900px){
+  .showcase{ display: none; }
+  .split{ grid-template-columns: 1fr; }
+}
+
+/* ---------- Animation ---------- */
+@keyframes pop{
+  from{ opacity: 0; transform: scale(.5); }
+  to{ opacity: 1; transform: none; }
+}
+@keyframes bob{
+  0%, 100%{ translate: 0 0; }
+  50%{ translate: 0 -6px; }
+}
+@keyframes rise{
+  from{ opacity: 0; transform: translateY(30px); }
+  to{ opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce){
+  *{ animation: none !important; transition: none !important; }
+}
+@media (max-width: 480px){
+  .wrapper{ padding: 28px 18px 24px; }
+  h1{ font-size: 2.4rem; }
+}

@@ -1,0 +1,610 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap');
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+
+.clubs-body{
+  font-family: Poppins, 'Segoe UI', sans-serif;
+  color:#fff;
+  min-height:100vh;
+  background-image:
+    linear-gradient(rgba(10,10,30,.62), rgba(10,10,30,.62)),
+    url("pexels-pixabay-159650.jpg");
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+}
+
+/* ---------- Home ---------- */
+.topbar{
+  display:flex; justify-content:flex-end; align-items:center; gap:14px;
+  padding:14px 24px; font-size:.9rem;
+}
+.logout{
+  border:1px solid #fff; background:transparent; color:#fff;
+  border-radius:999px; padding:.4em 1.2em; font:inherit; cursor:pointer;
+  transition:150ms ease;
+}
+.logout:hover{ background:#fff; color:#242235; }
+
+.home{ max-width:1100px; margin:0 auto; padding:10px 24px 70px; text-align:center; }
+.page-title{ font-size:clamp(2.2rem,6vw,3.6rem); font-weight:800; }
+.page-title{ margin-bottom:36px; }
+
+.club-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(230px,1fr));
+  gap:26px;
+}
+
+/* Glass card */
+.club-card{
+  display:flex; flex-direction:column; align-items:center;
+  padding:28px 20px 24px;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:22px;
+  backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  box-shadow:0 8px 24px rgba(0,0,0,.35);
+  transition:transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease, background 250ms ease;
+}
+.club-card[hidden]{ display:none; }
+.club-card:hover{
+  transform:translateY(-8px);
+  background:rgba(255,255,255,.16);
+  border-color:rgba(56,182,255,.7);
+  box-shadow:0 16px 36px rgba(0,0,0,.5), 0 0 22px rgba(56,182,255,.35);
+}
+
+/* Bilog na logo */
+.club-card img, .logo-fallback{
+  width:150px; height:150px; border-radius:50%;
+  object-fit:cover; background:#fff;
+  border:4px solid rgba(255,255,255,.85);
+  box-shadow:0 6px 16px rgba(0,0,0,.4);
+  transition:transform 250ms ease;
+}
+.club-card:hover img, .club-card:hover .logo-fallback{ transform:scale(1.06); }
+.logo-fallback{
+  display:flex; align-items:center; justify-content:center;
+  color:#242235; font-weight:800; font-size:1rem; text-align:center; padding:8px;
+}
+
+/* Pangalan ng club */
+.club-name{ margin-top:16px; font-size:1.05rem; font-weight:600; line-height:1.3; min-height:2.6em; display:flex; align-items:center; }
+.club-short{
+  margin-top:4px; font-size:.78rem; font-weight:600; letter-spacing:.12em;
+  color:#38b6ff;
+}
+
+.visit{
+  margin-top:16px;
+  background:#38b6ff; color:#000; font-weight:600; text-decoration:none;
+  padding:.5em 2.4em; border-radius:999px; font-size:1rem;
+  transition:150ms ease;
+}
+.visit:hover{ background:#fff; transform:scale(1.05); }
+
+
+/* ---------- Club page ---------- */
+.navbar{
+  position:sticky; top:0; z-index:10;
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;
+  background:#000; padding:8px 20px;
+}
+.nav-brand{ display:flex; align-items:center; gap:10px; color:#fff; text-decoration:none; font-size:.9rem; }
+.nav-brand img{ width:46px; height:46px; border-radius:4px; object-fit:cover; background:#fff; }
+.nav-links{ display:flex; gap:20px; }
+.nav-links a{ color:#ddd; text-decoration:none; font-size:.85rem; }
+.nav-links a:hover{ color:#fff; text-decoration:underline; }
+
+.hero{ text-align:center; padding:90px 20px; }
+.hero h1{ font-size:clamp(1.8rem,5vw,3rem); font-weight:800; text-shadow:0 2px 12px rgba(0,0,0,.7); }
+.hero p{ margin-top:8px; font-size:.95rem; }
+
+.block{ padding:40px 24px; max-width:1400px; margin:0 auto; scroll-margin-top:60px; }
+.block h2{ font-size:1.5rem; font-weight:600; margin-bottom:20px; }
+.empty{ color:#cfcfe0; font-size:.9rem; }
+
+.members-wrap{ display:flex; justify-content:center; }
+.members-wrap img{ width:auto; max-width:min(800px,100%); height:auto; max-height:90vh; object-fit:contain; background:rgba(0,0,0,.35); border-radius:6px; }
+
+.carousel{ display:flex; align-items:center; gap:12px; }
+.track{
+  display:flex; gap:18px; overflow-x:auto; flex:1;
+  scroll-snap-type:x mandatory; scrollbar-width:none; padding:4px;
+}
+.track::-webkit-scrollbar{ display:none; }
+.track img{ height:auto; max-height:480px; width:auto; max-width:none; align-self:center; object-fit:contain; background:rgba(0,0,0,.35); border-radius:4px; scroll-snap-align:start; flex-shrink:0; }
+.arrow{
+  flex-shrink:0; width:38px; height:38px; border:none; border-radius:50%;
+  background:#fff; color:#000; font-size:1.2rem; cursor:pointer;
+}
+.arrow:hover{ background:#38b6ff; }
+
+.announce-wrap{ display:flex; flex-wrap:wrap; gap:24px; }
+.announce{ width:320px; }
+.announce img{ width:100%; aspect-ratio:1/1; object-fit:cover; background:rgba(0,0,0,.35); border-radius:4px; }
+.announce p{ margin-top:10px; font-size:.95rem; line-height:1.5; }
+
+
+/* ============================================================
+   EFFECTS (club pages lang: .club-page)
+   ============================================================ */
+@keyframes rise{
+  from{ opacity:0; transform:translateY(40px); }
+  to{ opacity:1; transform:none; }
+}
+@keyframes drop{
+  from{ opacity:0; transform:translateY(-100%); }
+  to{ opacity:1; transform:none; }
+}
+
+/* Page load */
+.club-page .navbar{ animation:drop .7s ease both; transition:padding 250ms ease, background 250ms ease, box-shadow 250ms ease; }
+.club-page .hero h1{ animation:rise .9s .2s ease both; }
+.club-page .hero p{ animation:rise .9s .45s ease both; }
+.club-page .hero{ will-change:transform, opacity; }
+
+/* Navbar lumiliit pag nag-scroll */
+.club-page .navbar.scrolled{
+  padding-top:2px; padding-bottom:2px;
+  background:rgba(0,0,0,.82);
+  backdrop-filter:blur(8px);
+  box-shadow:0 4px 18px rgba(0,0,0,.45);
+}
+.club-page .nav-brand img{ transition:width 250ms ease, height 250ms ease; }
+.club-page .navbar.scrolled .nav-brand img{ width:32px; height:32px; }
+
+/* Underline animation sa nav links */
+.club-page .nav-links a{ position:relative; text-decoration:none; padding-bottom:3px; }
+.club-page .nav-links a::after{
+  content:""; position:absolute; left:0; bottom:0; height:2px; width:100%;
+  background:var(--accent); transform:scaleX(0); transform-origin:left; transition:transform 250ms ease;
+}
+.club-page .nav-links a:hover{ text-decoration:none; }
+.club-page .nav-links a:hover::after{ transform:scaleX(1); }
+
+/* Scroll reveal (lalabas pag nakita sa screen) */
+.js .reveal:not(.in){ opacity:0; }
+.js .reveal.in{ animation:rise .8s ease var(--d, 0s) backwards; }
+
+/* Hover effects */
+.club-page .members-wrap img,
+.club-page .track img,
+.club-page .announce img{
+  transition:transform 350ms ease, box-shadow 350ms ease;
+}
+.club-page .members-wrap img:hover,
+.club-page .track img:hover,
+.club-page .announce img:hover{
+  transform:scale(1.04);
+  box-shadow:0 14px 34px rgba(0,0,0,.55);
+}
+.club-page .track{ padding:14px 4px; }
+.club-page .arrow{ transition:transform 200ms ease, background 200ms ease; }
+.club-page .arrow:hover{ transform:scale(1.15); }
+
+@media (prefers-reduced-motion: reduce){
+  .club-page *{ animation:none !important; transition:none !important; }
+}
+
+/* ============================================================
+   DESIGN NG CLUB PAGE: kulay ng club, hero logo, glass panels
+   ============================================================ */
+:root{ --accent:#38b6ff; }
+
+/* Navbar */
+.club-page .navbar{ border-bottom:2px solid var(--accent); }
+.club-page .nav-brand img{ border:2px solid var(--accent); }
+
+/* Hero na may logo */
+.club-page .hero{
+  padding:70px 20px 80px;
+  background:radial-gradient(ellipse at 50% 35%, color-mix(in srgb, var(--accent) 38%, transparent), transparent 65%);
+}
+.hero-logo{
+  display:block; margin:0 auto 22px;
+  width:150px; height:150px; border-radius:50%; object-fit:cover; background:#fff;
+  border:5px solid var(--accent);
+  box-shadow:0 0 0 6px rgba(255,255,255,.15), 0 10px 30px rgba(0,0,0,.5), 0 0 40px var(--accent);
+  animation:rise .9s ease both;
+}
+
+/* Glass panel sa bawat section */
+.club-page .block{
+  width:min(1200px, calc(100% - 48px));
+  max-width:none;
+  margin:0 auto 32px;
+  padding:34px 30px 38px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:22px;
+  backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  box-shadow:0 8px 24px rgba(0,0,0,.35);
+}
+
+/* Title na nasa gitna na may guhit */
+.club-page .block h2{ text-align:center; margin-bottom:28px; font-weight:700; letter-spacing:.02em; }
+.club-page .block h2::after{
+  content:""; display:block; width:64px; height:4px; margin:10px auto 0;
+  border-radius:4px; background:var(--accent);
+}
+
+.club-page .track{ scrollbar-width:thin; scrollbar-color:var(--accent) transparent; }
+.club-page .arrow:hover{ background:var(--accent); color:#fff; }
+.club-page .members-wrap img:hover,
+.club-page .track img:hover,
+.club-page .announce img:hover{ box-shadow:0 14px 34px rgba(0,0,0,.55), 0 0 22px var(--accent); }
+.club-page .announce-wrap{ justify-content:center; }
+.club-page .empty{ text-align:center; width:100%; }
+
+/* Click para palakihin */
+.zoomable{ cursor:zoom-in; }
+.lightbox{
+  position:fixed; inset:0; z-index:100;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(0,0,0,.9);
+  animation:fadein .25s ease;
+}
+.lightbox[hidden]{ display:none; }
+@keyframes fadein{ from{ opacity:0; } to{ opacity:1; } }
+.lightbox img{
+  max-width:88vw; max-height:86vh; object-fit:contain;
+  border-radius:6px; box-shadow:0 10px 50px rgba(0,0,0,.7);
+}
+.lb-close{
+  position:absolute; top:16px; right:22px; width:44px; height:44px;
+  border:none; border-radius:50%; background:#fff; color:#000;
+  font-size:1.8rem; line-height:1; cursor:pointer;
+}
+.lb-nav{
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:48px; height:48px; border:none; border-radius:50%;
+  background:#fff; color:#000; font-size:1.4rem; cursor:pointer;
+}
+.lb-prev{ left:20px; } .lb-next{ right:20px; }
+.lb-nav[hidden]{ display:none; }
+.lb-close:hover, .lb-nav:hover{ background:var(--accent); color:#fff; }
+.lb-count{ position:absolute; bottom:18px; left:0; right:0; text-align:center; color:#ddd; font-size:.9rem; }
+
+@media (max-width:600px){
+  .club-page .block{ padding:24px 14px 28px; width:calc(100% - 24px); }
+  .hero-logo{ width:110px; height:110px; }
+  .lb-prev{ left:6px; } .lb-next{ right:6px; }
+}
+
+
+/* ---------- Mga team sa loob ng isang club (hal. Blue Dragons) ---------- */
+.members-wrap.has-teams{
+  flex-direction:column; align-items:center; gap:44px;
+}
+.team{ width:100%; text-align:center; }
+.team-name{
+  display:inline-block; margin-bottom:20px;
+  font-size:1.25rem; font-weight:600; letter-spacing:.04em;
+  padding:.35em 1.4em;
+  background:rgba(255,255,255,.1);
+  border:1px solid var(--accent);
+  border-radius:999px;
+  box-shadow:0 0 16px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+.team-images{ display:flex; flex-wrap:wrap; justify-content:center; gap:22px; }
+
+
+/* ---------- Design ng Members text ---------- */
+.members-head{ text-align:center; margin-bottom:30px; }
+.eyebrow{
+  display:inline-block;
+  font-size:.75rem; font-weight:600; letter-spacing:.32em; text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:8px;
+}
+#members .members-head h2,
+#activities .members-head h2,
+#announcement .members-head h2{
+  margin-bottom:0;
+  font-size:clamp(1.7rem, 4vw, 2.4rem);
+  font-weight:800;
+  background:linear-gradient(90deg, #ffffff 25%, var(--accent));
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent; color:transparent;
+}
+.members-msg, .team-msg{
+  position:relative;
+  max-width:640px; margin:18px auto 0;
+  padding:0 34px;
+  font-size:1.05rem; font-style:italic; line-height:1.7;
+  color:#e8ebf7;
+}
+.members-msg::before, .members-msg::after,
+.team-msg::before, .team-msg::after{
+  position:absolute;
+  font-family:Georgia, serif; font-style:normal; font-weight:700;
+  font-size:2.6rem; line-height:1;
+  color:var(--accent); opacity:.85;
+}
+.members-msg::before, .team-msg::before{ content:"\201C"; left:0; top:-6px; }
+.members-msg::after, .team-msg::after{ content:"\201D"; right:0; bottom:-18px; }
+.team-msg{ font-size:.95rem; margin:-6px auto 22px; color:#d6daec; }
+
+
+/* ---------- Lazy loading: placeholder habang naglo-load ---------- */
+.track img:not(.loaded){ width:320px; height:320px; }
+
+/* ---------- Back button ---------- */
+.back-wrap{ width:min(1200px, calc(100% - 48px)); margin:18px auto 0; text-align:left; }
+.back{
+  display:inline-block; padding:.45em 1.2em;
+  color:#fff; text-decoration:none; font-size:.9rem; font-weight:500;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.3);
+  border-radius:999px;
+  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  transition:transform 200ms ease, background 200ms ease, border-color 200ms ease;
+}
+.back:hover{ transform:translateX(-4px); background:rgba(255,255,255,.18); border-color:var(--accent); }
+
+/* ---------- About ---------- */
+.about-text{
+  max-width:760px; margin:0 auto;
+  text-align:center; font-size:1.08rem; line-height:1.85; color:#eef0fa;
+}
+
+/* ---------- How to join ---------- */
+.join-steps{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:20px;
+}
+.join-step{
+  display:flex; flex-direction:column; align-items:center; text-align:center; gap:14px;
+  padding:26px 20px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:18px;
+  transition:transform 250ms ease, border-color 250ms ease, box-shadow 250ms ease;
+}
+.join-step:hover{
+  transform:translateY(-6px);
+  border-color:var(--accent);
+  box-shadow:0 10px 26px rgba(0,0,0,.4), 0 0 18px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+.join-num{
+  width:46px; height:46px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--accent); color:#06121f; font-weight:800; font-size:1.2rem;
+  box-shadow:0 0 16px color-mix(in srgb, var(--accent) 60%, transparent);
+}
+.join-step p{ font-size:.98rem; line-height:1.6; color:#eef0fa; }
+.join-actions{ margin-top:26px; text-align:center; }
+.join-actions:empty{ display:none; }
+.join-btn{
+  display:inline-block; padding:.7em 2em;
+  background:var(--accent); color:#06121f; font-weight:700; text-decoration:none;
+  border-radius:999px;
+  transition:transform 200ms ease, box-shadow 200ms ease, background 200ms ease;
+}
+.join-btn:hover{ transform:scale(1.06); background:#fff; box-shadow:0 0 20px var(--accent); }
+
+/* ---------- Footer ---------- */
+.site-footer{
+  margin-top:20px; padding:34px 20px 40px;
+  text-align:center; color:#cfd3e6; font-size:.9rem; line-height:1.8;
+  border-top:2px solid var(--accent);
+  background:rgba(0,0,0,.45);
+}
+.foot-club{ color:#fff; font-weight:600; font-size:1rem; }
+.foot-small{ margin-top:6px; font-size:.78rem; opacity:.8; }
+.clubs-body:not(.club-page) .site-footer{ border-top-color:#38b6ff; margin-top:40px; }
+
+
+/* ---------- Search at filter sa home ---------- */
+.clubs-body .page-title{ margin-bottom:22px; }
+.search-box{ margin:0 auto 18px; max-width:420px; }
+.search-box input{
+  width:100%; padding:.8em 1.4em; font:inherit; color:#fff;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.3); border-radius:999px;
+  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  transition:150ms ease;
+}
+.search-box input::placeholder{ color:#d0d0e4; }
+.search-box input:focus{ outline:none; border-color:#38b6ff; box-shadow:0 0 0 3px rgba(56,182,255,.3); }
+
+.filters{
+  display:flex; flex-wrap:wrap; justify-content:center; gap:10px;
+  margin-bottom:34px;
+}
+.chip{
+  padding:.45em 1.4em; font:inherit; font-size:.9rem; font-weight:500; color:#fff;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.3); border-radius:999px;
+  cursor:pointer; transition:150ms ease;
+}
+.chip:hover{ border-color:#38b6ff; background:rgba(255,255,255,.18); }
+.chip.active{ background:#38b6ff; color:#06121f; border-color:#38b6ff; font-weight:700; }
+.no-result{ margin-top:30px; color:#d8d8ea; }
+
+/* ============================================================
+   JOIN: button sa home, badge, at membership form
+   ============================================================ */
+.club-card{ position:relative; }
+.visit.join{ background:#5be3a0; }
+.visit.join:hover{ background:#fff; }
+.joined-badge{
+  position:absolute; top:12px; right:12px;
+  padding:.2em .8em; font-size:.7rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+  color:#06121f; background:#5be3a0; border-radius:999px;
+  box-shadow:0 2px 8px rgba(0,0,0,.4);
+}
+
+/* Member badge sa hero ng club page */
+.member-badge{
+  display:inline-block; margin-top:14px; padding:.3em 1.1em;
+  font-size:.8rem; font-weight:600;
+  color:#fff; background:rgba(255,255,255,.12);
+  border:1px solid var(--accent); border-radius:999px;
+  animation:rise .9s .6s ease both;
+}
+.foot-links{ margin-top:6px; }
+.foot-links a{ color:var(--accent); font-weight:600; text-decoration:none; }
+.foot-links a:hover{ text-decoration:underline; }
+.leave-btn{
+  margin-top:14px; padding:.4em 1.3em; font:inherit; font-size:.8rem; color:#ffb3bd;
+  background:transparent; border:1px solid #ff6b81; border-radius:999px; cursor:pointer;
+  transition:150ms ease;
+}
+.leave-btn:hover{ background:#ff6b81; color:#fff; }
+
+/* ---------- Join form page ---------- */
+.join-page{ --accent:#38b6ff; }
+.join-top{ padding:18px 24px 0; }
+.join-main{ display:flex; justify-content:center; padding:20px 18px 60px; }
+.join-card{
+  width:min(760px,100%);
+  padding:34px 34px 32px; text-align:center;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:24px;
+  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  box-shadow:0 12px 36px rgba(0,0,0,.5);
+  animation:rise .8s ease both;
+}
+.join-logo{
+  display:block; margin:0 auto 14px;
+  width:110px; height:110px; border-radius:50%; object-fit:cover; background:#fff;
+  border:4px solid var(--accent);
+  box-shadow:0 0 0 5px rgba(255,255,255,.15), 0 0 28px var(--accent);
+}
+.join-card h1{ margin-top:4px; font-size:clamp(1.6rem,4vw,2.3rem); font-weight:800; }
+.join-sub{ margin-top:6px; color:#d4d8ea; font-size:.92rem; }
+.form-status{ min-height:1.4em; margin-top:12px; font-size:.88rem; font-weight:500; color:#ff8a98; }
+.form-status.success{ color:#5be3a0; }
+
+#join-form{ margin-top:18px; text-align:left; }
+.form-grid, .extra-fields{ display:contents; }
+.form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px 18px; }
+.field{ display:flex; flex-direction:column; gap:6px; }
+.field.full{ margin-top:16px; }
+.field label{ font-size:.85rem; font-weight:600; color:#eef0fa; }
+.field input[type="text"], .field input[type="email"], .field input[type="tel"],
+.field select, .field textarea{
+  width:100%; padding:.75em 1em; font:inherit; font-size:.95rem; color:#fff;
+  background:rgba(255,255,255,.12);
+  border:2px solid rgba(255,255,255,.18); border-radius:12px;
+  transition:150ms ease;
+}
+.field textarea{ resize:vertical; min-height:100px; }
+.field select option{ color:#111; }
+.field input::placeholder, .field textarea::placeholder{ color:#c3c8de; opacity:.85; }
+.field input:hover, .field select:hover, .field textarea:hover,
+.field input:focus, .field select:focus, .field textarea:focus{ border-color:var(--accent); }
+.field input:focus, .field select:focus, .field textarea:focus{
+  outline:none;
+  box-shadow:0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+.field.incorrect input[type="text"], .field.incorrect input[type="email"], .field.incorrect input[type="tel"],
+.field.incorrect select, .field.incorrect textarea{ border-color:#ff6b81; }
+.field-error{ min-height:1em; font-size:.78rem; color:#ff8a98; }
+
+.check{ display:flex; align-items:flex-start; gap:10px; font-weight:400 !important; cursor:pointer; line-height:1.5; }
+.check input{ width:18px; height:18px; margin-top:3px; accent-color:var(--accent); flex-shrink:0; }
+
+.submit-btn{
+  display:block; margin:22px auto 0; padding:.85em 3.4em;
+  font:inherit; font-weight:700; text-transform:uppercase; color:#06121f;
+  background:var(--accent); border:none; border-radius:999px; cursor:pointer;
+  transition:150ms ease;
+}
+.submit-btn:hover:not(:disabled){ background:#fff; transform:scale(1.05); box-shadow:0 0 18px var(--accent); }
+.submit-btn:disabled{ opacity:.6; cursor:default; }
+
+@media (max-width:640px){
+  .form-grid{ grid-template-columns:1fr; }
+  .join-card{ padding:26px 18px 26px; }
+}
+
+
+/* ============================================================
+   ANNOUNCEMENT cards (may title/petsa) at ADMIN page
+   ============================================================ */
+.announce-title{ margin-top:12px; font-size:1.02rem; font-weight:700; line-height:1.3; }
+.announce-date{
+  display:inline-block; margin-top:6px; padding:.1em .8em;
+  font-size:.72rem; font-weight:600; letter-spacing:.04em;
+  color:#06121f; background:var(--accent); border-radius:999px;
+}
+.announce.text-only{
+  padding:22px 20px 20px; text-align:left;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.2);
+  border-top:4px solid var(--accent);
+  border-radius:14px;
+}
+.announce.text-only .announce-title{ margin-top:0; }
+
+.admin-link{
+  display:inline-block; margin-top:14px; padding:.4em 1.2em;
+  font-size:.82rem; font-weight:600; text-decoration:none;
+  color:#fff; background:rgba(255,255,255,.12);
+  border:1px solid var(--accent, #38b6ff); border-radius:999px;
+  transition:150ms ease;
+}
+.admin-link:hover{ background:var(--accent, #38b6ff); color:#06121f; }
+.topbar .admin-link{ margin-top:0; }
+
+.admin-page .join-card{ width:min(820px,100%); }
+.admin-denied{
+  margin-top:18px; padding:16px 18px; text-align:left; line-height:1.6;
+  color:#ffd0d6; background:rgba(255,107,129,.12);
+  border:1px solid #ff6b81; border-radius:14px;
+}
+#admin-form{ display:flex; flex-direction:column; gap:16px; }
+#admin-form .field.full{ margin-top:0; }
+.field small{ font-weight:400; color:#c3c8de; }
+.field input[type="date"], .field input[type="file"]{
+  width:100%; padding:.7em 1em; font:inherit; font-size:.95rem; color:#fff;
+  background:rgba(255,255,255,.12);
+  border:2px solid rgba(255,255,255,.18); border-radius:12px;
+  color-scheme:dark;
+}
+.field input[type="file"]::file-selector-button{
+  margin-right:12px; padding:.45em 1.1em; font:inherit; font-weight:600; color:#06121f;
+  background:var(--accent); border:none; border-radius:999px; cursor:pointer;
+}
+.a-preview{ margin-top:10px; max-width:220px; max-height:220px; border-radius:10px; align-self:flex-start; }
+.a-preview[hidden]{ display:none; }
+
+.posted{ margin-top:34px; padding-top:22px; border-top:1px solid rgba(255,255,255,.2); text-align:left; }
+.posted h2{ font-size:1.2rem; font-weight:700; margin-bottom:14px; }
+.posted-row{
+  display:flex; align-items:center; gap:14px; padding:12px 14px; margin-bottom:10px;
+  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); border-radius:12px;
+}
+.posted-row img{ width:56px; height:56px; object-fit:cover; border-radius:8px; flex-shrink:0; }
+.posted-info{ flex:1; min-width:0; display:flex; flex-direction:column; gap:2px; }
+.posted-info strong{ font-size:.95rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.posted-info span{ font-size:.78rem; color:#c3c8de; }
+.posted-del{
+  padding:.35em 1em; font:inherit; font-size:.8rem; color:#ffb3bd;
+  background:transparent; border:1px solid #ff6b81; border-radius:999px; cursor:pointer;
+}
+.posted-del:hover{ background:#ff6b81; color:#fff; }
+.posted-empty, .posted-note{ font-size:.85rem; color:#c3c8de; }
+.posted-note{ margin-top:12px; }
+.posted code{ color:var(--accent); }
+
+/* ---------- Admin link sa footer ---------- */
+.foot-admin{ color:#9aa3c4; font-size:.75rem; text-decoration:none; }
+.foot-admin:hover{ color:#fff; text-decoration:underline; }
+
+
+/* ---------- Listahan ng members (admin) ---------- */
+.table-wrap{ overflow-x:auto; border-radius:12px; border:1px solid rgba(255,255,255,.18); }
+.members-table{ width:100%; border-collapse:collapse; font-size:.85rem; text-align:left; }
+.members-table th, .members-table td{ padding:.6em .9em; white-space:nowrap; }
+.members-table th{
+  font-size:.75rem; letter-spacing:.06em; text-transform:uppercase; color:#06121f;
+  background:var(--accent);
+}
+.members-table td{ border-top:1px solid rgba(255,255,255,.12); color:#eef0fa; }
+.members-table tbody tr:hover{ background:rgba(255,255,255,.08); }

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin panel</title>
+  <link rel="stylesheet" href="clubs.css">
+  <script src="clubs.js" defer></script>
+  <script src="app.js" defer></script>
+  <script src="membership.js" defer></script>
+  <script src="announcements.js" defer></script>
+  <script src="admin.js" defer></script>
+</head>
+<body class="clubs-body join-page admin-page">
+  <div class="join-top">
+    <a href="home.html" class="back">&larr; Back to clubs</a>
+  </div>
+
+  <main class="join-main">
+    <div class="join-card">
+      <span class="eyebrow">Admin</span>
+      <h1>Admin panel</h1>
+      <p class="join-sub">Post an announcement for your club. It will show on the club page.</p>
+
+      <p class="form-status" id="form-status" role="alert"></p>
+      <div class="admin-denied" id="admin-denied" hidden></div>
+
+      <!-- ===== ADD ANNOUNCEMENT ===== -->
+      <div id="tab-announce" hidden>
+        <form id="admin-form" novalidate>
+          <div class="field">
+            <label for="a-club">Club</label>
+            <select id="a-club" name="club"></select>
+          </div>
+
+          <div class="field full">
+            <label for="a-title">Title <small>(optional)</small></label>
+            <input type="text" id="a-title" name="title" maxlength="80" placeholder="e.g. Seminar for all IT students">
+          </div>
+
+          <div class="field full">
+            <label for="a-date">Date <small>(optional)</small></label>
+            <input type="date" id="a-date" name="date">
+          </div>
+
+          <div class="field full">
+            <label for="a-text">Announcement</label>
+            <textarea id="a-text" name="text" rows="5" maxlength="800" placeholder="Write the announcement here (date, venue, details...)"></textarea>
+            <span class="field-error"></span>
+          </div>
+
+          <div class="field full">
+            <label for="a-image">Picture <small>(optional)</small></label>
+            <input type="file" id="a-image" name="image" accept="image/png,image/jpeg,image/webp">
+            <img id="a-preview" class="a-preview" alt="" hidden>
+          </div>
+
+          <button type="submit" class="submit-btn">Post announcement</button>
+        </form>
+
+        <section class="posted" id="posted">
+          <h2>Posted announcements</h2>
+          <div id="posted-list"></div>
+          <p class="posted-note">Announcements written in <code>clubs.js</code> are not listed here. Posts are saved in the database.</p>
+        </section>
+
+        <section class="posted" id="members-section">
+          <h2>Members of this club</h2>
+          <div id="members-list"></div>
+        </section>
+      </div>
+
+    </div>
+  </main>
+</body>
+</html>
