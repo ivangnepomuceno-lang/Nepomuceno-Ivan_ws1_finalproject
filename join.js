@@ -1,5 +1,5 @@
 appReady.then(() => {
-  // ---------- Protektado: dapat naka-login ----------
+ 
   if (!requireLogin()) throw new Error('not logged in')
   const joinUser = membershipUser()
 
@@ -24,11 +24,11 @@ appReady.then(() => {
     const status = document.getElementById('form-status')
     const extra = document.getElementById('extra-fields')
 
-    // Prefill gamit ang account
+    
     document.getElementById('f-email').value = joinUser.email || ''
     document.getElementById('f-fullname').value = joinUser.firstname || ''
 
-    // Dagdag na field: Team (kung may teams ang club) at requirements ng club
+    
     const addField = (id, label, type, options) => {
       const wrap = document.createElement('div')
       wrap.className = 'field'
@@ -102,7 +102,7 @@ appReady.then(() => {
       return ok
     }
 
-    // Alisin ang error kapag nag-type ulit
+    
     form.addEventListener('input', (e) => setError(e.target, ''))
     form.addEventListener('change', (e) => setError(e.target, ''))
 
@@ -137,7 +137,7 @@ appReady.then(() => {
         }
       })
 
-      // ipadala sa server (database)
+      // move to server (database)
       const submitBtn = form.querySelector('.submit-btn')
       submitBtn.disabled = true
       try {
