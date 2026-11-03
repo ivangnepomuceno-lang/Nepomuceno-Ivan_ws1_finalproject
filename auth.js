@@ -141,7 +141,7 @@ if (form && form.id === 'form') {
     }
   })
 
-  // Alisin ang pula kapag nag-type ulit ang user
+  
   const allInputs = [firstname_input, email_input, password_input, confirm_password_input]
     .filter(input => input != null)
 
@@ -162,7 +162,7 @@ if (form && form.id === 'form') {
   })
 }
 
-// ---------- Home page (protected) ----------
+// ---------- Home page  ----------
 const welcome_name = document.getElementById('welcome-name')
 const logout_form = document.getElementById('logout-form')
 
