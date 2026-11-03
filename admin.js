@@ -24,7 +24,7 @@ appReady.then(async () => {
     aStatus.textContent = text || ''
   }
 
-  // Paliitin ang picture bago i-upload (mas mabilis, mas maliit sa server)
+  
   const compress = (file, maxSize = 900, quality = 0.82) =>
     new Promise((resolve, reject) => {
       const reader = new FileReader()
