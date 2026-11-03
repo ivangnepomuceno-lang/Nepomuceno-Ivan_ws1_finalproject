@@ -14,6 +14,5 @@ const ADMIN_EMAILS = [
 // --- Officers: 
 const CLUB_OFFICERS = [
     'ces' =>['gian@gmail.com'],
-    // 'ces'   => ['officer@email.com'],
-    // 'chess' => ['president@email.com', 'secretary@email.com'],
+    
 ];
