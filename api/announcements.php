@@ -1,5 +1,5 @@
 <?php
-// Listahan ng announcement ng isang club (para sa members at admin/officers lang)
+
 require __DIR__ . '/_helpers.php';
 require_method('GET');
 $user = require_login();
