@@ -1,5 +1,5 @@
 <?php
-// List ng members ng club 
+// List of member in club
 require __DIR__ . '/_helpers.php';
 require_method('GET');
 $user = require_login();
