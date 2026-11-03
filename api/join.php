@@ -10,7 +10,7 @@ if (!valid_club_id($club)) {
     fail('Invalid club.', 422);
 }
 
-// member na ibalik na lang
+// member will back to home
 $st = db()->prepare('SELECT * FROM memberships WHERE user_id = ? AND club_id = ?');
 $st->execute([$user['id'], $club]);
 $existing = $st->fetch();
