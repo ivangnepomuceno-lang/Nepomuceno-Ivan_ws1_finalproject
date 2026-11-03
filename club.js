@@ -4,7 +4,7 @@ appReady.then(async () => {
   const id = new URLSearchParams(location.search).get('club')
   const club = CLUBS[id]
 
-  // Para sa members lang: kapag hindi pa sumali, ipapadala sa join form
+  
   const allowed = !!club && isMember(id)
 
   if (!club) {
@@ -14,7 +14,7 @@ appReady.then(async () => {
   } else {
     document.title = club.name
 
-    // Kulay at hero logo muna, para hindi mawala kahit may error sa ibang bahagi
+    
     document.documentElement.style.setProperty('--accent', club.color || '#38b6ff')
     const heroLogo = document.getElementById('hero-logo')
     if (heroLogo) {
@@ -64,7 +64,7 @@ appReady.then(async () => {
         badge.remove()
       }
 
-      // Facebook link (kung nilagay sa clubs.js)
+      
       const links = document.getElementById('foot-links')
       if (club.facebook) {
         const fb = document.createElement('a')
@@ -200,9 +200,7 @@ appReady.then(async () => {
   }
 
 
-  // ============================================================
-  //  KULAY NG CLUB + HERO LOGO + CLICK PARA PALAKIHIN
-  // ============================================================
+  
   if (allowed) {
     // Lightbox
     const lb = document.getElementById('lightbox')
@@ -233,7 +231,7 @@ appReady.then(async () => {
       show()
     }
 
-    // bawat section ay may sariling grupo ng picture
+    
     ;['.team-images', '#members-list:not(.has-teams)', '#activity-track', '#announce-list'].forEach(sel => {
       document.querySelectorAll(sel).forEach(box => {
         const imgs = Array.from(box.querySelectorAll('img'))
@@ -284,7 +282,7 @@ appReady.then(async () => {
       io.observe(el)
     })
 
-    // 2) Navbar lumiliit pag nag-scroll + 3) Parallax sa hero at background
+    
     const navbar = document.querySelector('.navbar')
     const hero = document.querySelector('.hero')
     let ticking = false
