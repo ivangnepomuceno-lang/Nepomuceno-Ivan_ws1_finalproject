@@ -1,5 +1,5 @@
 <?php
-// Mga tulong na gamit ng lahat ng API file (hindi ito direktang binubuksan)
+
 require_once __DIR__ . '/config.php';
 
 header('Content-Type: application/json; charset=utf-8');
@@ -28,7 +28,7 @@ function fail(string $message, int $code = 400, array $fields = []): void
     json_out(['ok' => false, 'error' => $message, 'fields' => (object)$fields], $code);
 }
 
-// Kapag may hindi inaasahang error, ipakita ito bilang JSON (para madaling malaman ang mali)
+
 set_exception_handler(function (Throwable $e) {
     http_response_code(500);
     echo json_encode(['ok' => false, 'error' => 'Server error: ' . $e->getMessage(), 'fields' => new stdClass()]);
