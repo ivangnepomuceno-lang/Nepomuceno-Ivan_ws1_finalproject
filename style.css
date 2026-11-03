@@ -130,7 +130,7 @@ form input::placeholder{
   opacity: 0.85;
 }
 
-/* Autofill ng browser: huwag maging puti */
+
 form input:-webkit-autofill{
   -webkit-text-fill-color: var(--text-color);
   -webkit-box-shadow: 0 0 0 1000px #2a3150 inset;
