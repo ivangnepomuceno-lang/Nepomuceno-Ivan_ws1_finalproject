@@ -6,7 +6,7 @@
   <title>ICCT Clubs</title>
   <noscript><meta http-equiv="refresh" content="0; url=login.html"></noscript>
   <script>
-    // naka-login -> home, hindi pa -> login
+    
     fetch('api/me.php', { credentials: 'same-origin' })
       .then(function (r) { return r.json() })
       .then(function (j) { window.location.replace(j && j.user ? 'home.html' : 'login.html') })
