@@ -16,7 +16,7 @@ if (!can_manage($user, $row['club_id'])) {
     fail('You are not allowed to delete this announcement.', 403);
 }
 
-// burahin din ang picture sa uploads folder
+
 if ($row['image_path'] !== '' && strpos($row['image_path'], 'uploads/announcements/') === 0) {
     $file = dirname(__DIR__) . '/uploads/announcements/' . basename($row['image_path']);
     if (is_file($file)) {
