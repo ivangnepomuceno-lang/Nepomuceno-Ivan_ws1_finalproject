@@ -1,5 +1,5 @@
 appReady.then(async () => {
-  // ---------- Protektado ----------
+  
   if (!requireLogin()) return
 
   const aStatus = document.getElementById('form-status')
