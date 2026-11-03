@@ -1,10 +1,10 @@
 <?php
-// Mag-post ng announcement (admin / officer lang). Tumatanggap ng form na may optional na picture.
+
 require __DIR__ . '/_helpers.php';
 require_method('POST');
 $user = require_login();
 
-// Kapag masyadong malaki ang upload, walang laman ang $_POST
+
 if (empty($_POST) && !empty($_SERVER['CONTENT_LENGTH'])) {
     fail('The upload is too large. Use a smaller picture.', 413);
 }
